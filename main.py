@@ -2,6 +2,7 @@ import pandas as pd
 df = pd.read_csv('salaries_by_college_major.csv')
 df.head(5)
 clean_df = df.dropna()
+pd.options.display.float_format = '{:,.2f}'.format
 
 
 #Question 1 : What college major has the highest mid-career salary? How much do graduates with this major earn?
