@@ -26,3 +26,14 @@ salary_10_pct = clean_df['Mid-Career 10th Percentile Salary'].loc[mid_career_min
 salary_90_pct = clean_df['Mid-Career 90th Percentile Salary'].loc[mid_career_min]
 
 print(f"{college_major_3} has the lowest mid-career salary and these graduates can expect to earn from ${salary_10_pct} to ${salary_90_pct}")
+
+#
+spread_col = clean_df['Mid-Career 90th Percentile Salary'] - clean_df['Mid-Career 10th Percentile Salary']
+clean_df.insert(1, 'Spread', spread_col)
+#Question 4:  Find the degrees with the highest potential? Find the top 5 degrees with the highest values in the 90th percentile.
+Highest_Potential = clean_df.sort_values('Mid-Career 90th Percentile Salary', ascending=False)
+print(Highest_Potential[['Undergraduate Major', 'Mid-Career 90th Percentile Salary']].head(5))
+
+#Question 5: Find the degrees with the greatest spread in salaries. Which top 6 majors have the largest difference between high and low earners after graduation?
+high_risk = clean_df.sort_values('Spread', ascending=False)
+print(high_risk[['Undergraduate Major', 'Spread', 'Mid-Career 90th Percentile Salary', 'Mid-Career 10th Percentile Salary']].head(6))
